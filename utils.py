@@ -1,8 +1,12 @@
 def calculate_average(numbers):
+    if not numbers:
+        return 0
     total = 0
     for num in numbers:
         total += num
-    return total / len(numbers)  # Bug 1：空列表会除零报错
+    return total / len(numbers)
 
 def get_user_name(user):
-    return user["name"].upper()  # Bug 2：如果 user 是 None 会报错
+    if user is None:
+        return ""
+    return user.get("name", "").upper()
